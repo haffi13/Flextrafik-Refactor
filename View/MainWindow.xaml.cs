@@ -67,7 +67,7 @@ namespace View
             try
             {
                 mainWindowViewModel.InitializeSelection();
-                ListContainer listContainer = ListContainer.GetInstance();
+                ListContainer listContainer = ListContainer.GetInstance;
                 List<Offer> outputListByUserID = listContainer.outputList.OrderBy(x => x.UserID).ToList();
                 listView.ItemsSource = outputListByUserID;
                 foreach(Offer offer in listContainer.outputList)

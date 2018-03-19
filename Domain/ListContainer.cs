@@ -4,13 +4,13 @@ namespace Domain
 {
     public sealed class ListContainer
     {
-        private static ListContainer instance;
+        // The class is instanciated here when any member of the class is referenced
+        private static readonly ListContainer instance = new ListContainer();
 
         public List<RouteNumber> routeNumberList;
         public List<Contractor> contractorList;
         public List<Offer> outputList;
         public List<Offer> conflictList;
-        static readonly ListContainer listContainer = new ListContainer();
 
         private ListContainer()
         {
@@ -20,14 +20,11 @@ namespace Domain
             conflictList = new List<Offer>();
         }
 
+        // When other classes want to use ListContainer they get the instance from here.
         public static ListContainer GetInstance
         {
             get
             {
-                if(instance == null)
-                {
-                    instance = new ListContainer();
-                }
                 return instance;
             }
         }
