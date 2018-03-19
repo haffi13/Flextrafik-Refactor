@@ -39,7 +39,7 @@ namespace View
             return filename;
         }
 
-        public void SaveCSVCallFile()
+        public void SaveCSV(string selector)
         {
             if (SelectionDone == true)
             {
@@ -50,7 +50,19 @@ namespace View
                 saveDlg.ShowDialog();
 
                 string path = saveDlg.FileName;
-                iOController.InitializeExportToCallingList(path);
+                
+                switch (selector)
+                {
+                    case "call":
+                        iOController.InitializeExportToCallingList(path, selector);
+                        break;
+                    case "publish":
+                        iOController.InitializeExportToPublishList(path, selector);
+                        break;
+                    default:
+                        //error
+                        break;
+                }
                 MessageBox.Show("Filen er gemt.");
             }
             else
@@ -58,26 +70,46 @@ namespace View
                 MessageBox.Show("Du har ikke udvalgt vinderne endnu.. Kør Udvælgelse først!");
             }
         }
-        public void SaveCSVPublishFile()
-        {
-            if (SelectionDone == true)
-            {
-                SaveFileDialog saveDlg = new SaveFileDialog();
 
-                saveDlg.Filter = "CSV filer (*.csv)|*.csv|All files (*.*)|*.*";
-                saveDlg.InitialDirectory = @"C:\%USERNAME%\";
-                saveDlg.ShowDialog();
+        //public void SaveCSVCallFile()
+        //{
+        //    if (SelectionDone == true)
+        //    {
+        //        SaveFileDialog saveDlg = new SaveFileDialog();
 
-                string path = saveDlg.FileName;
+        //        saveDlg.Filter = "CSV filer (*.csv)|*.csv|All files (*.*)|*.*";
+        //        saveDlg.InitialDirectory = @"C:\%USERNAME%\";
+        //        saveDlg.ShowDialog();
 
-                iOController.InitializeExportToPublishList(path);
-                MessageBox.Show("Filen er gemt.");
-            }
-            else
-            {
-                MessageBox.Show("Du har ikke udvalgt vinderne endnu.. Kør Udvælgelse først!");
-            }
-        }
+        //        string path = saveDlg.FileName;
+        //        iOController.InitializeExportToCallingList(path);
+        //        MessageBox.Show("Filen er gemt.");
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Du har ikke udvalgt vinderne endnu.. Kør Udvælgelse først!");
+        //    }
+        //}
+        //public void SaveCSVPublishFile()
+        //{
+        //    if (SelectionDone == true)
+        //    {
+        //        SaveFileDialog saveDlg = new SaveFileDialog();
+
+        //        saveDlg.Filter = "CSV filer (*.csv)|*.csv|All files (*.*)|*.*";
+        //        saveDlg.InitialDirectory = @"C:\%USERNAME%\";
+        //        saveDlg.ShowDialog();
+
+        //        string path = saveDlg.FileName;
+
+        //        iOController.InitializeExportToPublishList(path);
+        //        MessageBox.Show("Filen er gemt.");
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Du har ikke udvalgt vinderne endnu.. Kør Udvælgelse først!");
+        //    }
+        //}
         public void InitializeSelection()
         {
             if (ImportDone)

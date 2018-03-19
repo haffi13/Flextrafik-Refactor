@@ -83,6 +83,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CSVExport.cs" />
     <Compile Include="CSVExportToCallList.cs" />
     <Compile Include="CSVExportToPublishList.cs" />
     <Compile Include="CSVImport.cs" />

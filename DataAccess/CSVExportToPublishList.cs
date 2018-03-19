@@ -10,33 +10,22 @@ namespace DataAccess
 {
     public class CSVExportToPublishList
     {
-        Encoding encoding;
-        string FilePath;
-        ListContainer listContainer;
-        List<Offer> winningOfferList;
-        public CSVExportToPublishList(string filePath)
-        {
-            FilePath = filePath;
-            listContainer = ListContainer.GetInstance;
-            winningOfferList = listContainer.outputList;
-            encoding = Encoding.GetEncoding("iso-8859-1");
-        }
-        public void CreateFile()
+        public void CreateFile(Encoding encoding, string filePath, List<Offer> winningOfferList)
         {
             try
             {
                 // Delete the file if it exists.
-                if (File.Exists(FilePath))
+                if (File.Exists(filePath))
                 {
                     // Note that no lock is put on the
                     // file and the possibility exists
                     // that another process could do
                     // something with it between
                     // the calls to Exists and Delete.
-                    File.Delete(FilePath);
+                    File.Delete(filePath);
                 }
                 // Create the file.
-                using (StreamWriter streamWriter = new StreamWriter(@FilePath, true, encoding))
+                using (StreamWriter streamWriter = new StreamWriter(@filePath, true, encoding))
                 {
                     streamWriter.WriteLine("Garantivognsnummer" + ";" + "Virksomhedsnavn" + ";" + "Pris" + ";");
                     foreach (Offer offer in winningOfferList)
@@ -47,7 +36,7 @@ namespace DataAccess
                 }
 
                 // Open the stream and read it back.
-                using (StreamReader sr = File.OpenText(FilePath))
+                using (StreamReader sr = File.OpenText(filePath))
                 {
                     string s = "";
                     while ((s = sr.ReadLine()) != null)

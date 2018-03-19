@@ -14,15 +14,15 @@ namespace Logic
             routeNumberList = new List<RouteNumber>();
         }
        
-        public void InitializeExportToPublishList(string filePath)
+        public void InitializeExportToPublishList(string filePath, string selector)
         {
-            CSVExportToPublishList ExportToPublishList = new CSVExportToPublishList(filePath);
-            ExportToPublishList.CreateFile(); 
+            CSVExport ExportToPublishList = new CSVExport(filePath, selector);
+            //ExportToPublishList.CreateFile(); 
         }
-        public void InitializeExportToCallingList(string filePath)
+        public void InitializeExportToCallingList(string filePath, string selector)
         {
-            CSVExportToCallList ExportCallList = new CSVExportToCallList(filePath);
-            ExportCallList.CreateFile();
+            CSVExport ExportCallList = new CSVExport(filePath, selector);
+            //ExportCallList.CreateFile();
         }
         public void InitializeImport(string masterDataFilepath, string routeNumberFilepath)
         {

@@ -93,7 +93,8 @@ namespace View
         {
             try
             {
-                mainWindowViewModel.SaveCSVPublishFile();
+                mainWindowViewModel.SaveCSV("publish");
+                //mainWindowViewModel.SaveCSVPublishFile();//publish
             }
             catch (Exception x)
             {
@@ -105,7 +106,8 @@ namespace View
         {
             try
             {
-                mainWindowViewModel.SaveCSVCallFile();
+                mainWindowViewModel.SaveCSV("call");
+                //mainWindowViewModel.SaveCSVCallFile();//call
             }          
             catch (Exception x)
             {

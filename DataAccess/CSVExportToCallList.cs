@@ -11,34 +11,22 @@ namespace DataAccess
 {
     public class CSVExportToCallList
     {
-        Encoding encoding;
-        string FilePath;
-        ListContainer listContainer;
-        List<Offer> winningOfferList;
-        public CSVExportToCallList(string filePath)
-        {
-            FilePath = filePath;
-            listContainer = ListContainer.GetInstance;
-            winningOfferList = listContainer.outputList;
-            encoding = Encoding.GetEncoding("iso-8859-1");
-        }
-
-        public void CreateFile()
+        public void CreateFile(Encoding encoding, string filePath, List<Offer> winningOfferList)
         {
             try
             {
                 // Delete the file if it exists.
-                if (File.Exists(FilePath))
+                if (File.Exists(filePath))
                 {
                     // Note that no lock is put on the
                     // file and the possibility exists
                     // that another process could do
                     // something with it between
                     // the calls to Exists and Delete.
-                    File.Delete(FilePath);
+                    File.Delete(filePath);
                 }
                 // Create the file.
-                using (StreamWriter streamWriter =new StreamWriter(@FilePath, true, encoding)) 
+                using (StreamWriter streamWriter = new StreamWriter(@filePath, true, encoding)) 
                 {
                     streamWriter.WriteLine("Nummer" + ";" + "Virksomhedsnavn" + ";" + "Navn" + ";" +"Vedståede v. 2" + ";" + "Vedståede v. 3" + ";" + "Vedståede v. 5" + ";" + "Vedståede v. 6" + ";"+ "Vedståede v. 7" + ";" + "Vundne v. 2"+";" + "Vundne v. 3" + ";" + "Vundne v. 5" +";" + "Vundne v. 6" +";" + "Vundne v. 7");
                     List<Offer> offersToPrint = new List<Offer>(); 
@@ -56,12 +44,12 @@ namespace DataAccess
                 }
 
                 // Open the stream and read it back.
-                using (StreamReader sr = File.OpenText(FilePath))
+                using (StreamReader sr = File.OpenText(filePath))
                 {
                     string s = "";
                     while ((s = sr.ReadLine()) != null)
                     {
-                        Console.WriteLine(s);
+                        //Console.WriteLine(s); WHUUUUUUUUUUT!!! ÐÐ!
                     }
                 }
             }
