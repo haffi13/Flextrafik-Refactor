@@ -71,45 +71,6 @@ namespace View
             }
         }
 
-        //public void SaveCSVCallFile()
-        //{
-        //    if (SelectionDone == true)
-        //    {
-        //        SaveFileDialog saveDlg = new SaveFileDialog();
-
-        //        saveDlg.Filter = "CSV filer (*.csv)|*.csv|All files (*.*)|*.*";
-        //        saveDlg.InitialDirectory = @"C:\%USERNAME%\";
-        //        saveDlg.ShowDialog();
-
-        //        string path = saveDlg.FileName;
-        //        iOController.InitializeExportToCallingList(path);
-        //        MessageBox.Show("Filen er gemt.");
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Du har ikke udvalgt vinderne endnu.. Kør Udvælgelse først!");
-        //    }
-        //}
-        //public void SaveCSVPublishFile()
-        //{
-        //    if (SelectionDone == true)
-        //    {
-        //        SaveFileDialog saveDlg = new SaveFileDialog();
-
-        //        saveDlg.Filter = "CSV filer (*.csv)|*.csv|All files (*.*)|*.*";
-        //        saveDlg.InitialDirectory = @"C:\%USERNAME%\";
-        //        saveDlg.ShowDialog();
-
-        //        string path = saveDlg.FileName;
-
-        //        iOController.InitializeExportToPublishList(path);
-        //        MessageBox.Show("Filen er gemt.");
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Du har ikke udvalgt vinderne endnu.. Kør Udvælgelse først!");
-        //    }
-        //}
         public void InitializeSelection()
         {
             if (ImportDone)

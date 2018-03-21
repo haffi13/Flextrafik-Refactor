@@ -6,6 +6,7 @@ using System.Threading;
 using Domain;
 using System.IO;
 using System.Globalization;
+
 namespace DataAccess
 {
     public class CSVImport
@@ -110,7 +111,9 @@ namespace DataAccess
         {
             try
             {
-                string filepath = Environment.ExpandEnvironmentVariables("RouteNumbers.csv");
+                // Hardcoded the RouteNumber path.
+                //string filepath = Environment.ExpandEnvironmentVariables("RouteNumbers.csv");
+                string filepath = @"C:\Users\hafst\Desktop\Flextrafik-Refactoring-master\RouteNumbers.csv";
                 var data = File.ReadAllLines(filepath, encoding)
                 .Skip(1)
                 .Select(x => x.Split(';'))

@@ -1,0 +1,54 @@
+﻿<Window x:Class="View.TilbudsOplysningerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        mc:Ignorable="d"
+        Title="TilbudsOplysningerWindow" Height="300" Width="300">
+    
+    <Grid>
+        <ListView
+            ItemsSource="{Binding GarantiList}"
+            Margin="0,15,0,0">
+            <ListView.View>
+            <GridView>
+                <GridViewColumn 
+                    Header="VognNummer"
+                    DisplayMemberBinding="{Binding Garantivognsnummer}">
+                </GridViewColumn>
+                <GridViewColumn
+                    Header="GarantiPeriodeHverdag"
+                    DisplayMemberBinding="{Binding GarantiPeriodeHverdag}">
+                    
+                </GridViewColumn>
+                <GridViewColumn
+                    Header="GarantiPeriodeWeekend"
+                    DisplayMemberBinding="{Binding GarantiPeriodeWeekend}">
+                    
+                </GridViewColumn>
+                <GridViewColumn
+                    Header="GarantiPeriodeHellidage"
+                    DisplayMemberBinding="{Binding GarantiPeriodeHellidage}">
+                    
+                </GridViewColumn>
+                <GridViewColumn
+                    Header="TvungneFerieUgeNr"
+                    DisplayMemberBinding="{Binding TvungenFerieUgeNr}">
+                    
+                </GridViewColumn>
+                <GridViewColumn
+                    Header="TvungneFerieDager"
+                    DisplayMemberBinding="{Binding TvungneLukkedage}">
+                    
+                </GridViewColumn>
+                <GridViewColumn
+                    Header="Kontraktsum"
+                    DisplayMemberBinding="{Binding Timepris}">
+                    
+                </GridViewColumn>
+            </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

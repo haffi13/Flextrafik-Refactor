@@ -24,11 +24,11 @@ namespace View
             //this.MasterDataFilePathSelect_Click = new RelayCommand(ExecuteSearch);
         }
 
-        public ICommand MasterDataFilePathSelect_Click;
-        public ICommand RouteNumberFilePathSelect_Click;
-        public ICommand Import_Click;
-        public ICommand StartSelection_Click;
-        public ICommand SaveAll_Click;
+        public RelayCommand MasterDataFilePathSelect;
+        public RelayCommand RouteNumberFilePathSelect;
+        public RelayCommand Import;
+        public ICommand StartSelection;
+        public ICommand SaveAll;
         private void BtnMasterDataFilePathSelect_Click(object sender, RoutedEventArgs e)
         {
             txtBoxFilePathMasterData.Text = mainWindowViewModel.ChooseCSVFile();
@@ -94,7 +94,6 @@ namespace View
             try
             {
                 mainWindowViewModel.SaveCSV("publish");
-                //mainWindowViewModel.SaveCSVPublishFile();//publish
             }
             catch (Exception x)
             {
@@ -107,12 +106,20 @@ namespace View
             try
             {
                 mainWindowViewModel.SaveCSV("call");
-                //mainWindowViewModel.SaveCSVCallFile();//call
             }          
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
             }
+        }
+
+        private void tilbudsOplysningerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            // Should not do dis!
+            TilbudsOplysningerWindow tow = new TilbudsOplysningerWindow();
+            tow.Show();
         }
     }
 }
