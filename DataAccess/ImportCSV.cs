@@ -23,7 +23,9 @@ namespace DataAccess
             using (TextReader fileReader = File.OpenText(path))
             {
                 var csv = new CsvReader(fileReader);
+
                 csv.Configuration.HasHeaderRecord = true;
+                csv.Configuration.HeaderValidated = null;
                 csv.Configuration.Delimiter = ",";
                 csv.Configuration.Encoding = Encoding.UTF8;
 

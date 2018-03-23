@@ -1,37 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain;
 using Logic;
 
+//By using the dialog boxes we are breaking MVVM.
 namespace View
 {
     public class TilbudsOplysningerWindowViewModel : BaseViewModel
     {
+        // ListView in xaml is bound to this.
         public ObservableCollection<GarantiPrisAttributes> GarantiList { get; set; }
-        ObservableCollection<GarantiPrisAttributes> temp;
+        
         GetGarantiList getGarantiList;
-        MainWindowViewModel mwvm;
         TypeOfDaysEachYear typeOfDays;
         GarantiPrisValueConverter valueConverter;
 
         public TilbudsOplysningerWindowViewModel()
         {
-            mwvm = new MainWindowViewModel();
             getGarantiList = new GetGarantiList();
             typeOfDays = new TypeOfDaysEachYear();
             valueConverter = new GarantiPrisValueConverter();
-            string filepath = mwvm.ChooseCSVFile();
-            temp = getGarantiList.GarantiList(filepath);
-            CalculateKontraktsum();
-            
+            string filepath = PickCSVFile(); //PickCSVFile is inherited from BaseViewModel
+            ObservableCollection<GarantiPrisAttributes>temp = getGarantiList.GarantiList(filepath);
+            CalculateKontraktsum(temp);            
         }
 
         // Populate GarantiList with correct kontraktsum
-        public void CalculateKontraktsum()
+        public void CalculateKontraktsum(ObservableCollection<GarantiPrisAttributes> temp)
         {
             GarantiList = new ObservableCollection<GarantiPrisAttributes>();
             int[] days = typeOfDays.GetNumberOfDays();
@@ -40,8 +35,8 @@ namespace View
 
             foreach (var item in temp)
             {
-                int weekdayGarantiTimer = valueConverter.GetNumberOfHours(item.GarantiPeriodeHverdag);
-                int weekenddayGarantiTimer = valueConverter.GetNumberOfHours(item.GarantiPeriodeWeekend);
+                int weekdayGarantiTimer = valueConverter.NumberOfHours(item.GarantiPeriodeHverdag);
+                int weekenddayGarantiTimer = valueConverter.NumberOfHours(item.GarantiPeriodeWeekend);
                 int pris = Convert.ToInt32(item.Timepris);
 
                 int yearlyCost = ((weekdayGarantiTimer * weekdays)
@@ -51,8 +46,5 @@ namespace View
                 GarantiList.Add(item);
             }
         }
-        
-        
-
     }
 }

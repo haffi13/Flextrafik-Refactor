@@ -5,16 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="TilbudsOplysningerWindow" Height="300" Width="300">
-    
+        Title="TilbudsOplysningerWindow" Height="400" Width="850">
     <Grid>
         <ListView
             ItemsSource="{Binding GarantiList}"
             Margin="0,15,0,0">
             <ListView.View>
             <GridView>
-                <GridViewColumn 
-                    Header="VognNummer"
+                <GridViewColumn
+                    Header="Garantivognsnummer"
                     DisplayMemberBinding="{Binding Garantivognsnummer}">
                 </GridViewColumn>
                 <GridViewColumn

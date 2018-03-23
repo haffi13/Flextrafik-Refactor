@@ -8,6 +8,7 @@ namespace Logic
 {
     public class GarantiPrisValueConverter
     {
+
         // Either return value or zero, does better for math than returning nothing
         // Make the method check if there are more than one divider and react accordingly
         public int[] GetIndividualNumbers(string input)
@@ -30,21 +31,11 @@ namespace Logic
             return null;
         }
 
-        public int GetNumberOfHours(string input)
-        {
-            int ret = 0;
-            string[] periods = input.Split('+');
+        
 
-            foreach (string item in periods)
-            {
-                ret += ConvertHoursFormatToInt(item);
-            }
-            return ret;
-        }
-
-        public int GetNumberOfWeeksOff(string input)
+        public int GetNumberOfWeeksOff(string input) // Need to test and connect this method
         {
-            // + symbol to divide the week periods, - symbol to show the range of weeks
+            // + symbol to divide the week periods, - symbol to show the range of weeks.
             int ret = 0;
             int[] numbers;
             string[] str = input.Split('+');
@@ -64,8 +55,8 @@ namespace Logic
             return ret;
         }
 
-        //before and after 12 - Need to handle other cases.
-        private int ConvertHoursFormatToInt(string input)
+        // Before and after 12 - Need to handle other cases.
+        public int NumberOfHours(string input)
         {
             int[] numbers = GetIndividualNumbers(input);
             if(numbers != null)
@@ -73,11 +64,12 @@ namespace Logic
                 int num1 = numbers[0];
                 int num2 = numbers[1];
                 int ret = 0;
-
+                // Works before pm and between am-pm.
                 if ((num1 > 00 && num1 <= 12) && (num2 <= 24 && num2 > 12))
                 {
                     ret = (12 - num1) + (num2 - 12);
                 }
+                // Need to find a solution that fits all possible inputs.
                 return ret;
             }
             return 0;

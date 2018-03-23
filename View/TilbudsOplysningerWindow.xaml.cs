@@ -25,6 +25,8 @@ namespace View
         public TilbudsOplysningerWindow()
         {
             InitializeComponent();
+
+            // For some reason the xaml does not want to set this as the data context.
             DataContext = new TilbudsOplysningerWindowViewModel();
         }
     }

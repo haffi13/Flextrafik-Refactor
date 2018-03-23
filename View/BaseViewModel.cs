@@ -1,18 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.Win32;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace View
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        // Must be a generic way to open a file dialog. OpenFileDialog uses Microsoft.Win32
+        public string PickCSVFile()
+        {
+            OpenFileDialog openFileDialog;
+            string filename = "Ingen fil er valgt";
+            openFileDialog = new OpenFileDialog
+            {
+                Multiselect = false,
+                Filter = "CVS filer (*.csv)|*.csv|All files (*.*)|*.*"
+            };
+            if (openFileDialog.ShowDialog() == true)
+            {
+                filename = openFileDialog.FileName;
+                return filename;
+            }
+            return filename;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)//there was another way to do this where you don't need to specify the name
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
 

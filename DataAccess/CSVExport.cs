@@ -1,9 +1,6 @@
 ﻿using Domain;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess
 {
@@ -11,14 +8,11 @@ namespace DataAccess
     {
         Encoding encoding;
         string FilePath;
-        //ListContainer listContainer;
         List<Offer> winningOfferList;
         public CSVExport(string filePath, string selector)
         {
             FilePath = filePath;
-            //listContainer = ListContainer.GetInstance;
             winningOfferList = ListContainer.GetInstance.outputList;
-            //winningOfferList = listContainer.outputList;
             encoding = Encoding.GetEncoding("iso-8859-1");
 
             switch (selector)
