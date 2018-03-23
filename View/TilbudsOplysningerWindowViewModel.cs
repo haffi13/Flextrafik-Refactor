@@ -33,6 +33,8 @@ namespace View
             int weekdays = days[0];
             int weekenddays = days[1];
 
+            // We have not implemented the ferie uger but we have a method which gives us the number of weeks
+            // the car must be on a vacation. Also haven't implemented the tvungne lukkedage.
             foreach (var item in temp)
             {
                 int weekdayGarantiTimer = valueConverter.NumberOfHours(item.GarantiPeriodeHverdag);

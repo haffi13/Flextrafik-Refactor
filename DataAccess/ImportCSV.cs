@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 namespace DataAccess
 {
     // Our own CSV Import class. 
-    // It uses CsvHelper library instead of importing data manually from the CSV file.
+    // It uses CsvHelper library which we got from NuGet.
     public class ImportCSV
     {
         // Path to the CSV file.

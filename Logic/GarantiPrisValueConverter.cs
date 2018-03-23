@@ -8,9 +8,7 @@ namespace Logic
 {
     public class GarantiPrisValueConverter
     {
-
-        // Either return value or zero, does better for math than returning nothing
-        // Make the method check if there are more than one divider and react accordingly
+        
         public int[] GetIndividualNumbers(string input)
         {
             if (input != string.Empty)
@@ -55,7 +53,7 @@ namespace Logic
             return ret;
         }
 
-        // Before and after 12 - Need to handle other cases.
+        
         public int NumberOfHours(string input)
         {
             int[] numbers = GetIndividualNumbers(input);

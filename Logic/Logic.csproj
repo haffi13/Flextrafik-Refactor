@@ -62,7 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GarantiPrisCalculator.cs" />
     <Compile Include="GarantiPrisValueConverter.cs" />
     <Compile Include="GetGarantiList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
