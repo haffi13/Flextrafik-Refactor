@@ -139,11 +139,11 @@
                VerticalAlignment="Bottom"
                Width="93" />
         <Button 
-                Content="Button" 
+                Content="Udregn kontraktsum" 
                 HorizontalAlignment="Left" 
                 Margin="49,529,0,0" 
                 VerticalAlignment="Top" 
-                Width="75"
+                Width="129"
                 Click="tilbudsOplysningerBtn_Click"/>
     </Grid>
 </Window>
